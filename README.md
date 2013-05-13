@@ -54,6 +54,7 @@ right, up down, up right, press x, up x).
 ## License
 
 Copyright ⑨ 2013 Cirno Isnotbaka
+
 This program is free software. It comes without any warranty, to
 the extent permitted by applicable law. You can redistribute it
 and/or modify it under the terms of the Do What The Fuck You Want
