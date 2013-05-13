@@ -10,8 +10,7 @@ This script is created to extend controls in
 
 ## Usage
 
-If you don't want to compile the code yourself, just copy
-and run target/clj-hisoutensoku.jar and run. Else, use
+If you don't want to compile the code yourself, just copy target/clj-hisoutensoku.jar and run. Else, use
 [Leiningen](http://github.com/technomancy/leiningen/) to
 build the project (use "lein run" or "lein uberjar").
 
@@ -42,7 +41,7 @@ Set up player keys like that:
 
 Resulting config:
 
-You can use all 8 numpad directions, numpad5 stands for Flight(D).
+You can use all 8 numpad directions, numpad5 stands for Flight(D), End = A, Plus(with Numpad+) = B, Enter(with numpad_enter) = C, Multiply(with numpad*) = Switch card, Subtract(with numpad-) = Use card. You can still use the original keys, but this is STRONGLY➈ not recommended.
 
 Holding 1 or 3 or 7 or 9 and Enter or Plus will make some
 special moves. For example, 1+enter is 236b
