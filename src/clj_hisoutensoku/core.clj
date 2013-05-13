@@ -20,7 +20,9 @@
              (jna-call :User32 "GetForegroundWindow" Integer)
              (:pointer str-pointer)
              512)]
-  (apply str (map char (repeatedly size #(.get (:buffer str-pointer)))))))
+  (apply str (map
+              (fn [arg] (char (if (< arg 0) (+ arg 256) arg)))
+              (repeatedly size #(.get (:buffer str-pointer)))))))
 (defn touhou-window? []
  (re-find #"Touhou Hisoutensoku ver" (get-current-window-title)))
 
