@@ -1,6 +1,7 @@
 (ns clj-hisoutensoku.core
  (:gen-class)
- (:use clj-hisoutensoku.tables))
+ (:use clj-hisoutensoku.tables)
+ (:require clojure.set))
 
 (defmacro jna-call [lib func ret & args]
  "Thanks nakkaya!"
@@ -92,7 +93,7 @@
      :or {key-pressed (fn [])
           key-released (fn [])
           key-hold (fn [])}}]
- (fn [last-sequences sequence & [sequence-failed]]
+ (fn [pressed-keys last-sequences sequence & [sequence-failed]]
   (if (not sequence-failed)
    {:last-sequences
     (if (some #(= % sequence) last-sequences)
@@ -131,23 +132,25 @@
      (fn [arg]
       (if (keyword? arg)
        (release [arg])
-       (if (some key-down? (second arg))
+       (if (some keys-down? (second arg)) ; the only fn that directly checks key state.
+                                          ; Hope that this wont make bugs.
         nil
         (release [(first arg)]))))
      sequence))))
 (defn all-matches
  [& matches]
- (fn [last-sequences sequence & [sequence-failed]]
+ (fn [pressed-keys last-sequences sequence & [sequence-failed]]
   (reduce
    (fn [{:keys [last-sequences succeed?]}
         [keys function]]
     (let [new-sequence
           (vec (concat sequence keys))
           seq-failed?
-          (not (apply keys-down? keys))
+          (not (clojure.set/subset? (set keys) pressed-keys))
           {new-last-sequences :last-sequences
            new-succeed? :succeed?}
           (function
+           pressed-keys
            last-sequences
            new-sequence
            (or sequence-failed seq-failed?))]
@@ -161,17 +164,18 @@
    (partition 2 matches))))
 (defn first-match
  [& matches]
- (fn [last-sequences sequence & [sequence-failed]]
+ (fn [pressed-keys last-sequences sequence & [sequence-failed]]
   (reduce
    (fn [{:keys [last-sequences matched succeed?]}
         [keys function]]
     (let [new-sequence
           (vec (concat sequence keys))
           seq-failed?
-          (not (apply keys-down? keys))
+          (not (clojure.set/subset? (set keys) pressed-keys))
           {new-last-sequences :last-sequences
            new-succeed? :succeed?}
           (function
+           pressed-keys
            last-sequences
            new-sequence
            (or matched seq-failed?))]
@@ -458,7 +462,11 @@
   (if (touhou-window?)
    (do
     (Thread/sleep 1)
-    (recur (:last-sequences (input-list prev []))))
+    (println prev)
+    (recur (:last-sequences (input-list
+                             (set (keep (fn[[name _]] (if (key-down? name) name)) vk-key-table))
+                             prev
+                             []))))
    (do
     (Thread/sleep 700)
     (recur prev)))))
