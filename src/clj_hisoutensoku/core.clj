@@ -326,6 +326,37 @@
                    (release [:z]) (sleep 15))
                  :key-released
                  #(release [:w :d])))
+(def fns-tk-j2a-rev (fns
+                     :key-pressed
+                     #(press [:w :a])
+                     :key-hold
+                     #(do
+                       (press [:w]) (sleep 15)
+                       (release [:w]) (press [:s]) (sleep 15)
+                       (press [:z]) (sleep 15)
+                       (release 5 [:z :s]) (sleep 15))
+                     :key-released
+                     #(release [:w :a :z])))
+(def fns-tk-j6a-rev (fns
+                     :key-pressed
+                     #(press [:w :a])
+                     :key-hold
+                     #(do
+                       (press [:w]) (sleep 15)
+                       (release [:w]) (sleep 15)
+                       (press [:z]) (sleep 15)
+                       (release [:z]) (sleep 15))
+                     :key-released
+                     #(release [:w :a])))
+(def fns-tk-j5a-rev (fns
+                     :key-pressed
+                     #(press [:w :a])
+                     :key-hold
+                     #(do
+                       (press [:z]) (sleep 15)
+                       (release [:z]) (sleep 15))
+                     :key-released
+                     #(release [:w :a])))
 
 (def input-list
  (first-match
@@ -408,6 +439,12 @@
               fns-tk-j2a
               [:numpad9]          ; end+9 == instant tkj5a
               fns-tk-j5a
+              [:numpad4 :numpad7] ; same, but reversed
+              fns-tk-j6a-rev
+              [:numpad1 :numpad7]
+              fns-tk-j2a-rev
+              [:numpad7]
+              fns-tk-j5a-rev
               []                  ; else it's simply A
               (key-sequence [:z]))    ; A
       [:+] (key-sequence [:x])        ; B
