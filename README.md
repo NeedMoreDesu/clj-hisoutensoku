@@ -14,27 +14,34 @@ If you don't want to compile the code yourself, just copy
 and run target/clj-hisoutensoku.jar and run. Else, use
 [Leiningen](http://github.com/technomancy/leiningen/) to
 build the project (use "lein run" or "lein uberjar").
+
 Didn't made any interface, so you'll end up closing it from
 your process manager. :)
 
+
 It only works with english touhou window title. You can
 change that and recompile the project.
+
 It have pre-defined hotkey rules inside. You can use that as
-an example to make your own script.
+an example to make your own script. Hard places are
+commented out. Lunatic places are still uncommented, though. :)
+
 
 Set up player keys like that:
-up - w;
-down - s;
-left - a;
-right - d;
-Melee - z;
-Weak Shot - x;
-Strong Shot - c;
-Flight - v;
-Switch card - b;
-Use card - n;
+
+9. up - w;
+9. down - s;
+9. left - a;
+9. right - d;
+9. Melee - z;
+9. Weak Shot - x;
+9. Strong Shot - c;
+9. Flight - v;
+9. Switch card - b;
+9. Use card - n;
 
 Resulting config:
+
 You can use all 8 numpad directions, numpad5 stands for Flight(D).
 
 Holding 1 or 3 or 7 or 9 and Enter or Plus will make some
