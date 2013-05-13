@@ -1,6 +1,6 @@
 # clj-hisoutensoku
 
-When my autohotkey script stroke 1500 lines, my patience was
+When my autohotkey script struck 1500 lines, my patience was
 broken, and I tried to find a way to make things lispy way.
 That's like this package was created. It uses Winapi throung
 JNA, and creates re-mapping system lispy way.
