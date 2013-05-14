@@ -410,7 +410,7 @@
     #(do (press [:a]) (sleep 10) (release [:a]) (sleep 10))))
   [:home] ; heavy artillery
   (first-match
-   [:numpad7] fns-421c [:numpad8] fns-22c [:numpad9] fns-623b
+   [:numpad7] fns-421c [:numpad8] fns-22c [:numpad9] fns-623c
    [:numpad4] fns-421b [:numpad5] fns-22b [:numpad6] fns-623b
    [:numpad1] fns-421c [:numpad2] fns-22c [:numpad3] fns-623c)
   [:+] ; same key as for B bullets
