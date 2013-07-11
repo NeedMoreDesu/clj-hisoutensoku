@@ -10,7 +10,7 @@ This script is created to extend controls in
 
 ## Usage
 
-If you don't want to compile the code yourself, just copy target/clj-hisoutensoku.jar and run. Else, use
+If you don't want to compile the code yourself, just copy target/clj-hisoutensoku.jar and targer/clj-hisoutensoku-config.clj (must be in the same folder) and run. Else, use
 [Leiningen](http://github.com/technomancy/leiningen/) to
 build the project (use "lein run" or "lein uberjar").
 
@@ -18,37 +18,31 @@ Didn't made any interface, so you'll end up closing it from
 your process manager. :)
 
 
-It only works with english touhou window title. You can
-change that and recompile the project.
+It only works with english touhou window title. To change that, place a different pattern in clj-hisoutensoku-config.clj
 
-It have pre-defined hotkey rules inside. You can use that as
-an example to make your own script. Hard places are
-commented out. Lunatic places are still uncommented, though. :)
+It have some pre-defined hotkey rules inside, but top-level
+rebinding is configurable with
+clj-hisoutensoku-config.clj. You can use that as an example
+to make your own script. Hard places are commented
+out. Lunatic places are still uncommented, though. :)
 
 
-Set up player keys like that:
-
-9. up - w;
-9. down - s;
-9. left - a;
-9. right - d;
-9. Melee - z;
-9. Weak Shot - x;
-9. Strong Shot - c;
-9. Flight - v;
-9. Switch card - b;
-9. Use card - n;
+Set up player keys to match old keys section in clj-hisoutensoku-config.clj
 
 Resulting config:
 
-You can use all 8 numpad directions, numpad5 stands for Flight(D), End = A, Plus(with Numpad+) = B, Enter(with numpad_enter) = C, Multiply(with numpad*) = Switch card, Subtract(with numpad-) = Use card. You can still use the original keys, but this is STRONGLY➈ not recommended.
+You can use all 8 numpad directions, numpad5 stands for Flight(D), End = A, Plus(with Numpad+) = B, Enter(with numpad_enter) = C, Multiply(with numpad*) = Switch card, Subtract(with numpad-) = Use card.
+You shouldnt use same key for new and old key, this is STRONGLY➈ not recommended.
 
 Holding 1 or 3 or 7 or 9 and Enter or Plus will make some
 special moves. For example, 1+enter is 236b
 (Hisoutensoku-style key input, stands for press down, press
 right, up down, up right, press x, up x).
-6+9+end is tkj6a, Home+numbers - specials, 1+6 = 66, 3+4 = 44,
-1+6+end = 66 j6a loop, 1+6+enter = 66 j5c loop.
+6+9+end is tkj6a(there are more versions of tk moves, including bullets, excluding specials),
+Home+numbers - specials,
+1+6 or 4+9 = 66, 3+4 or 6+7 = 44,
+1+6+end = 66 j5a loop, 1+6+enter = 66 j5c loop.
+3+9 = 29 d3 (wait for release) 29 29 (works with 1/2/3+7/8/9)
 
 ## License
 
