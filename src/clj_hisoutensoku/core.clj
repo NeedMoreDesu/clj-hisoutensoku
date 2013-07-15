@@ -527,7 +527,7 @@
    (java.io.PushbackReader.
     (clojure.java.io/reader
      (clojure.java.io/file
-      (this-jar)
+      (.getParent (clojure.java.io/file (this-jar)))
       "clj-hisoutensoku-config.clj")))]
   (let [window-pattern2 (read reader)
         new-keys (read reader)
