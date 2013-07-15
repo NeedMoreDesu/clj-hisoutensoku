@@ -177,7 +177,7 @@
                     (not (some keys-down? (second arg))))
                    (keys-down? arg)))
             (second arg)) ; the only fn that directly checks key state.
-                          ; Hope that this wont make bugs.
+                                        ; Hope that this wont make bugs.
         nil
         (release [(first arg)]))))
      sequence))))
@@ -516,10 +516,10 @@
 (declare ^:dynamic input-list)
 
 (defn this-jar
-  "utility function to get the name of jar in which this function is invoked"
-  [& [ns]]
-  (-> (or ns (class *ns*))
-      .getProtectionDomain .getCodeSource .getLocation .getPath))
+ "utility function to get the name of jar in which this function is invoked"
+ [& [ns]]
+ (-> (or ns (class *ns*))
+  .getProtectionDomain .getCodeSource .getLocation .getPath))
 
 (defn -main [& args]
  (with-open
@@ -527,7 +527,8 @@
    (java.io.PushbackReader.
     (clojure.java.io/reader
      (clojure.java.io/file
-      "d:/end06/clj-hisoutensoku/target/clj-hisoutensoku-config.clj")))]
+      (this-jar)
+      "clj-hisoutensoku-config.clj")))]
   (let [window-pattern2 (read reader)
         new-keys (read reader)
         old-keys (read reader)
